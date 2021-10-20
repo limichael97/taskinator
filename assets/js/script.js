@@ -218,7 +218,19 @@ var deleteTask = function(taskId) {
 
 var saveTasks = function() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+var loadTasks = function() {
+  var tasks = tasks;
+  console.log(tasks);
+  if (tasks === null) {
+    tasks = [];
+    return false;
+  }
+
+  tasks = JSON.parse(tasks);
 }
+
 
 // Create a new task
 formEl.addEventListener("submit", taskFormHandler);
@@ -228,3 +240,5 @@ pageContentEl.addEventListener("click", taskButtonHandler);
 
 // for changing the status
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
+
+loadTasks();
